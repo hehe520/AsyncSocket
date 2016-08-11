@@ -1,0 +1,2 @@
+# socket
+我在工作中用GCDAsyncSocket封装的一套TCP网络服务框架，用在公司产品上
