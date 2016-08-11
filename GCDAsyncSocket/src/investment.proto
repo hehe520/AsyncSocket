@@ -1,0 +1,174 @@
+syntax = "proto2";
+import "common.proto";
+package RPC;
+
+option java_package = "cn.jingzhuan.rpc.pb";
+
+// ======================================= 投顾服务 =======================================
+
+// 投资类型(周期)
+enum tg_investment_period_type
+{
+    tg_investment_period_type_null = 0;
+    tg_short_period = 1;
+ 	tg_mid_period = 2;
+	tg_long_period = 3;
+}
+
+// 股票买卖状态
+enum tg_stock_investment_state
+{
+     tg_stock_investment_state_null = 0;
+     tg_in_pool = 1;               // 调入组合
+     tg_auto_buy = 2;              // 系统买入
+	 tg_manual_buy = 3;            // 手动买入
+	 tg_hold = 4;                  // 持仓
+	 tg_out_pool = 5;              // 调出组合
+	 tg_modify_profit = 6;         // 调整目标价格
+	 tg_modify_stop = 7;           // 调整止损价格
+	 tg_auto_profit = 8;           // 系统止盈 
+	 tg_auto_stop = 9;             // 系统止损 
+	 tg_manually_profit = 10;      // 手动止盈
+	 tg_manually_stop = 11;        // 手动止损
+}
+
+// 股票属性
+message tg_stock_att
+{
+    required string code = 1;                         // 代码
+	required int64 date = 2;                          // 推荐日期
+	required float low_buy_pirce = 3;                 // 介入区间低值
+	required float high_buy_price = 4;                // 介入区间高值
+	required float target_price = 5;                  // 目标价格
+	required float stop_price = 6;                    // 止损价
+	required tg_investment_period_type inv_type = 7;  // 投资类型(周期)
+	required tg_stock_investment_state buy_state = 8; // 买卖状态 
+	required float current_buy_price = 9;             // 买入价格
+	required float current_sell_price = 10;           // 卖出价格
+}
+
+// 请求股票池
+message tg_req_stock_pool_msg
+{
+    required int64 version_id = 1;       // 版本ID
+	required int32 pid = 2;              // 产品ID(针对不同老师)
+}
+
+// 返回股票池
+message tg_stock_pool_msg
+{
+    required int64 version_id = 1;       // 版本ID
+    repeated tg_stock_att stocks = 2;    // 股票
+	required double position = 3;        // 仓位
+}
+
+//************ 系统推送股票状态变化
+
+// 调入组合
+message tg_stock_in_pool_notify_msg
+{
+	required int64 date = 1;             // 日期
+	required string code = 2;            // 股票代码
+	required string name = 3;            // 股票名称
+	required float low_price = 4;        // 介入区间低值
+	required float high_price = 5;       // 介入区间高值
+	required float target_price = 6;     // 止盈价格
+	required float stop_price = 7;       // 止损价格
+}
+
+// 买入
+message tg_stock_buy_notify_msg
+{
+	required int64 date = 1;             // 日期
+	required string code = 2;            // 股票代码
+	required string name = 3;            // 股票名称
+	required float buy_price = 4;        // 买入价格
+	required float target_price = 5;     // 目标价格
+	required float stop_price = 6;       // 止损价格
+	required bool auto_buy = 8;          // 系统/手动买入
+}
+
+// 调出组合
+message tg_stock_out_pool_notify_msg
+{
+	required int64 date = 1;             // 日期
+	required string code = 2;            // 股票代码
+	required string name = 3;            // 股票名称
+	required string desc = 4;            // 备注
+}
+
+// 调整目标价格
+message tg_stock_new_target_notify_msg
+{
+	required int64 date = 1;             // 日期
+	required string code = 2;            // 股票代码
+    required float old_target = 3;       // 原目标价格
+	required float new_target = 4;       // 新目标价格
+}
+
+// 调整止损价格
+message tg_stock_new_stop_notify_msg
+{
+	required int64 date = 1;             // 日期
+	required string code = 2;            // 股票代码
+    required float old_stop = 3;         // 原止损价格
+	required float new_stop = 4;         // 新止损价格
+}
+
+// 系统(手动)止盈
+message tg_stock_profit_notify_msg
+{
+	required int64 date = 1;             // 日期
+	required string code = 2;            // 股票代码
+    required float target_price = 3;     // 止盈价格
+	required float sell_price = 4;       // 卖出价格
+	required bool system_auto = 5;       // 是否自动
+	required string desc= 6;             // 描述
+}
+
+// 系统(手动)止损
+message tg_stock_stop_notify_msg
+{
+	required int64 date = 1;             // 日期
+	required string code = 2;            // 股票代码
+    required float stop_price = 3;       // 止损价格
+	required float sell_price = 4;       // 卖出价格
+	required bool system_auto = 5;       // 是否自动
+	required string desc= 6;             // 描述
+}
+
+// 要闻速递
+message tg_focus_news_notify_msg
+{
+   required int64 date = 1;        // 日期
+   required string title = 2;      // 标题
+   required string content = 3;    // 内容
+   required string url = 4;        // 跳转地址
+}
+
+// 通知预告
+message tg_trailer_notify_msg
+{
+   required int64 date = 1;        // 日期
+   required string title = 2;      // 标题
+   required string content = 3;    // 内容
+   required string url = 4;        // 跳转地址
+}
+
+message tg_req_msg_box_msg
+{
+    required int32 pid = 1;         // 投顾ID
+	optional int64 last_seq = 2;    // 消息索引
+}
+
+// 消息盒子组合消息
+message tg_msg_box_combo_msg
+{
+    message tg_msg_node
+	{
+	    required eum_nofity_type type = 1;   // 子消息类型
+		required bytes sub_msg = 2;          // 子消息的二进制内容
+		required int64 msg_seq = 3;          // 子消息的全局ID
+	}
+	repeated tg_msg_node msgs = 1;           // 消息合集
+}

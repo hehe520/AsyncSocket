@@ -1,0 +1,491 @@
+syntax = "proto2";
+import "common.proto";
+package RPC;
+
+option java_package = "cn.jingzhuan.rpc.pb";
+
+// ======================================= 指标服务 =======================================
+enum enum_index
+{
+	begin_index_enum = -1;
+	// 打包返回所有选股内容
+	index_combo = 0;
+	// 选股 - 3 个白武士
+	index_3bws = 1;
+	// 选股 - b 点买入
+	index_bdmr = 2;
+	// 选股 - 捕捞金叉
+	index_bljc = 3;
+	// 选股 - 垂头线
+	index_ctx = 4;
+	// 选股 - 低开高走
+	index_dkgz = 5;
+	// 选股 - 绝对底
+	index_jdd = 6;
+	// 选股 - 大底
+	index_dadi = 7;
+	// 选股 - 中底
+	index_zhongdi = 8;
+	// 选股 - 小底
+	index_xiaodi = 9;
+	// 选股 - 倒转垂头
+	index_dzct = 10;
+	// 选股 - 高开高走
+	index_gkgz = 11;
+	// 选股 - 好友反攻
+	index_hyfg = 12;
+	// 选股 - 主力高控盘
+	index_kongpan = 13;
+	// 选股 - 潜龙出击
+	index_qlcj = 14;
+	// 选股 - 曙光初现
+	index_sgcx = 15;
+	// 选股 - 水手抄底
+	index_sscd = 16;
+	// 选股 - 上升回档
+	index_sshd = 17;
+	// 选股 - 水手突破
+	index_sstp = 18;
+	// 选股 - 水手突破一
+	index_sstpy = 19;
+	// 选股 - 一阳指
+	index_yyz = 20;
+	// 选股 - 主力创新高
+	index_zlcxg = 21;
+	// 选股 - 控盘加仓B点
+	index_kongpan_jia_cang_b_dian = 22;;
+	// 选股 - 上升通道
+	index_sstd = 23;
+	// 选股 - 涨停跟踪
+	index_ztgz = 24;
+	// 选股 - K多方炮
+	index_k_dfp = 25;
+	// 选股 - 控盘金叉
+	index_kpjc = 26;
+
+	// 选股 - 主力追踪
+	index_zlzz = 27;
+	// 选股 - 主力状态
+	index_zlzt = 28;
+	// 选股 - 主力增减
+	index_zlzj = 29;
+	// 选股 - 相对价位
+	index_xdjw = 30;
+	// 选股 - 主力净买额
+	index_zljme = 31;
+	// 选股 - 通过智能辅助线进行选股
+	index_high_value = 32;
+
+	// 副图 - 主力追踪
+	ft_index_zlzz = 33;
+
+	// 副图 - 捕捞季节
+	ft_index_bljj = 34;
+
+	// 副图 - 主力统计
+	ft_index_zltj = 35;
+	ft_index_min_zltj = 36;
+
+	// 副图 - 跟风统计
+	ft_index_gftj = 37;
+	ft_index_min_gftj = 38;
+
+	// 副图 - 散户统计
+	ft_index_shtj = 39;
+	ft_index_min_shtj = 40;
+
+	// 副图 - 潜龙飞天
+	ft_index_qlft = 41;
+
+	// 副图 - 流动资金
+	ft_index_ldzj = 42;
+
+	// 副图 - 水手突破
+	ft_index_sstp = 43;
+
+	// 副图 - 主力控盘
+	ft_index_zlkp = 44;
+
+	// 副图 - 主力净买额
+	ft_index_zljme = 45;
+
+	// 副图 - HHJVOL(虚拟成交量)
+	ft_index_hhjvol = 46;
+
+	// 副图 - 股指期货总持仓
+	ft_index_zcc = 47;
+
+	// 副图 - 相对价位
+	ft_index_xdjw = 48;
+
+	// 副图 - 海洋寻底
+	ft_index_hyxd = 49;
+
+	// 主图指标
+	ft_index_ma = 50;
+
+	// 结束
+	end_index_enum = 51;
+}
+
+enum index_data_type
+{
+	cycle_begin = -1;
+	// 以分钟为周期
+	index_cycle_1_min = 0;
+	index_cycle_3_min = 1;
+	index_cycle_5_min = 2;
+	index_cycle_10_min = 3;
+	index_cycle_15_min = 4;
+	index_cycle_20_min = 5;
+	index_cycle_30_min = 6;
+	index_cycle_60_min = 7;
+	// 以天为周期
+	index_cycle_day = 8;	
+	// 以周为周期
+	index_cycle_week = 9;
+	// 以月为周期
+	index_cycle_month = 10;
+	// 以季度为周期
+	index_cycle_quarter = 11;
+	// 以年为周期
+	index_cycle_year = 12;
+
+	cycle_end = 10000;
+}
+
+// 选股结果的请求包
+message client_request_index_msg
+{
+	required enum_index name = 1;
+}
+
+// 选股结果请求的应答包
+message client_request_index_result_msg
+{
+	required enum_index name = 1;
+	repeated string stock_code = 2;
+}
+
+// 选股结果打包返回
+message client_index_combo_result_msg
+{
+    repeated client_request_index_result_msg index_node = 1;
+}
+
+// 错误信息
+message error_feedback_msg
+{
+    required string msg = 1;
+}
+
+// 副图指标请求包
+message index_data_msg
+{
+	required enum_index name = 1;			 // 请求指标名字
+	required string stock_code = 2;			 // 股票代码
+	required index_data_type cycle_type = 3; // 请求的周期类型
+	required data_selector selector = 4;	 // 数据筛选器  
+	optional bytes index_param = 5;          // 指标请求参数
+}
+
+// 各种副图指标的数据结构
+// 主力追踪, 数据结构
+message zlzz
+{
+	required uint32 time = 1;
+	required double zlzz_value = 3;
+}
+
+message zlzz_array
+{
+	repeated zlzz index_data = 1;
+}
+
+// 主力状态
+message zlzt
+{
+	required uint32 time = 1;
+	required double duan_xian_shang_gong = 2;
+
+	required double zhong_xian_qiang_shi = 3;
+	required double zhong_xian_kong_pan = 4;
+
+	required double duan_xian_chao_die = 5;
+	required double zhong_xian_chao_die= 6;
+}
+
+message zlzt_array
+{
+	repeated zlzt index_data = 1;
+}
+
+// 捕捞季节
+message bljj
+{
+	required uint32 time = 1;
+	required double XYS0 = 2;
+	required double XYSHSL = 3;
+	required double CYS13 = 4;
+}
+
+message bljj_array
+{
+	repeated bljj index_data = 1;
+}
+
+// 分时-主力统计
+// 分时-跟风统计
+// 分时-散户统计
+message minute_tj_data
+{
+	required uint32 time = 1; 
+	required double tj_value = 2;
+}
+
+message minute_tj_data_array
+{
+	repeated minute_tj_data index_data = 1;
+}
+
+// K线-主力统计
+// K线-跟风统计
+// K线-散户统计
+message tj_draw_value
+{
+	// 下边线值
+	required double p1 = 1;
+	// 上边线值
+	required double p2 = 2;
+	// true : 虚心  false: 实心
+	required bool   empty = 3;
+	// 大单差值
+	required uint32 diff = 4;
+}
+
+
+message kline_tj_data
+{
+	required uint32 time = 1; 
+	required double BUY  = 2;  // 当时买
+	required double SEL  = 3;  // 当日卖
+	required double JME  = 4;  // 净买额
+	required double JB   = 5;  // 净比
+	repeated tj_draw_value draw_value = 6;
+	required double TJ_VALUE = 7;  // 统计数值
+}
+
+message kline_tj_data_array
+{
+	repeated kline_tj_data index_data = 1;
+}
+
+
+// 水手突破
+message sstp
+{
+	required uint32 time = 1;
+	required double shang = 2;
+	required double ci_shang = 3;
+	required double ci_xia = 4;
+	required double xia = 5;
+}
+
+message sstp_array
+{
+	repeated sstp index_data = 1;
+}
+
+// 潜龙飞天
+message qlft
+{
+	required uint32 time = 1;	
+	required double zhong_xian_qiang_ruo = 2;
+	required double me = 3;
+}
+
+message qlft_array
+{
+	repeated qlft index_data = 1;
+}
+
+
+// 流动资金
+message ldzj
+{
+	required uint32 time = 1;
+	required double ldzj_value = 2;
+}
+
+message ldzj_array
+{
+	repeated ldzj index_data = 1;
+}
+
+
+// 主力控盘
+message zlkp
+{
+	required uint32 time = 1;
+	required double kong_pan_cheng_du = 2;
+	required double gao_kong_pan = 3;
+}
+
+message zlkp_array
+{
+	repeated zlkp index_data = 1;
+}
+
+// 主力增减
+message zlzj
+{
+	required uint32 time = 1;
+	required double jz = 2;
+	required double mmbl = 3;
+}
+
+message zlzj_array
+{
+	repeated zlzj index_data = 1;
+}
+
+// 主力净买额
+message zljme
+{
+	required uint32 time = 1;
+	required double zljme_value = 2;
+}
+
+message zljme_array
+{
+	repeated zljme index_data = 1;
+}
+
+message hhjvol
+{
+	required uint32 time = 1;
+	required double ma1_value = 2;
+	required double ma2_value = 3;
+	required double ma3_value = 4;
+	required double xuni_value = 5;
+	required double vol_value = 6;
+}
+
+message hhjvol_array
+{
+	repeated hhjvol index_data = 1;
+}
+
+// 相对价位
+message xdjw
+{
+	required uint32 time = 1;
+	required double pjgj = 2;
+	required double hs300 = 3;
+}
+
+message xdjw_array
+{
+	repeated xdjw index_data = 1;
+}
+
+
+// 股指期货总持仓
+message zcc
+{
+	required uint32 time = 1;
+	required double keep_sell = 2;
+	required double keep_buy = 3;
+}
+
+message zcc_array
+{
+	repeated zcc index_data = 1;
+}
+
+// 海洋寻底
+message hyxd
+{
+	required uint32 time = 1;
+	required uint32 MX = 2;	// 马线
+	required uint32 NX = 3; // 牛线
+	required uint32 SSRGL  = 4; 
+	required uint32 J = 5; 
+
+}
+
+message hyxd_array
+{
+	repeated hyxd index_data = 1;
+}
+
+// 主图MA指标
+message ma_param
+{
+	repeated uint32 count = 1;
+}
+
+message ma
+{
+	required uint32 time = 1;
+	repeated double ma_value = 2;
+}
+
+message ma_array
+{
+	repeated ma ma_data = 1;
+}
+
+// 副图指标应答包
+message index_data_result_msg
+{
+	required enum_index name = 1;			 // 请求指标名字
+	required string stock_code = 2;			 // 股票代码
+	required index_data_type cycle_type = 3; // 请求的周期类型
+	optional bytes body = 4;                 // 串列化的二级包体，根据 name 调用对应的PB类解析
+}
+
+// 沪深涨跌请求包
+message client_request_rise_drop_msg
+{
+	// 老旧接口使用， 新接入请勿使用
+	required uint32 begin = 1;				 // 请求开始时间  
+	required uint32 end = 2;				 // 请求结束时间
+
+	// lsw : 2016-05-07 调整， 由于接口已经上线， 后续会修改已经上线的接口调度方式， 
+	//       等待下一次强制升级， 就可以把 begin, end 两个变量完全舍弃
+	optional data_selector selector = 4;	 // 数据筛选器  
+}
+
+// 沪深涨跌应答包
+message rise_drop_data
+{
+	required uint32 time = 1;				// 计算时间
+	// SZA : 深圳A股
+	required uint32 SZA_rise_count = 2;		// SZA 涨的家数
+	required uint32 SZA_drop_count = 3;		// SZA 跌的家数
+	required uint32 SZA_unchange_count = 4;	// SZA 未变的家数
+
+	// SHA : 上海A股
+	required uint32 SHA_rise_count = 5;		// SHA 涨的家数
+	required uint32 SHA_drop_count = 6;		// SHA 跌的家数
+	required uint32 SHA_unchange_count = 7;	// SHA 未变的家数
+
+	// GEM : 创业板
+	required uint32 GEM_rise_count = 8;		// GEM 涨的家数
+	required uint32 GEM_drop_count = 9;		// GEM 跌的家数
+	required uint32 GEM_unchange_count = 10;	// GEM 未变的家数
+}
+
+message rise_drop_result_msg
+{
+	repeated rise_drop_data index_data = 1;
+}
+
+
+
+
+
+
+
+

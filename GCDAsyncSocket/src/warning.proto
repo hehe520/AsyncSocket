@@ -1,0 +1,162 @@
+syntax = "proto2";
+import "common.proto";
+package RPC;
+
+option java_package = "cn.jingzhuan.rpc.pb";
+
+enum enum_warning_type
+{
+	begin_warning_type_enum = 0;
+
+	// 市价超过设定值
+	warning_price_high = 1;
+	// 市价低于设定值
+	warning_price_low = 2;
+	// 涨幅(当天)高于设定值
+	warning_rise_percentage = 3;
+	// 跌幅(当天)低于设定值
+	warning_drop_percentage = 4;
+
+	end_warning_type_enum = 5;
+}
+
+
+// 对应  enum_warning_type 的 1, 2, 3, 4 预警配置进行设定
+message warning_config_data
+{
+	required enum_warning_type type = 1;
+	required float value = 2;
+	/* 
+	返回状态
+    —————————————
+    |   状态吗    |  结果	 |
+    |————————————|
+    |      0      |  不推送  |
+    |————————————|
+    |      1      |  推送    |
+    —————————————
+	*/
+	required uint32 status = 3;		
+}
+
+message user_warning_stock_status
+{
+	required string stock_code = 1;		// 股票代码
+	required string stock_name = 2;		// 股票名称
+	/* 
+    —————————————
+    |   状态吗    |  结果	 |
+    |————————————|
+    |      0      |  没有预警|
+    |————————————|
+    |      1      |  有预警  |
+    —————————————
+	*/
+	required bool status = 3;			// 对应的预警状态s
+}
+
+// 获取用户预警配置
+message warning_config_msg
+{
+	required uint32 uid = 1;				// 用户ID
+	required string stock_code = 2;			// 获取的股票代码, 如果没有则返回所有
+}
+
+message warning_config_result_msg
+{
+	required uint32 uid = 1;				    // 用户ID
+	repeated warning_config_data config_data = 2;	
+}
+
+// 获取用户的所有个股预警状态
+message warning_user_all_stock_status_msg
+{
+	required uint32 uid = 1;				// 用户ID
+}
+
+message warning_user_all_stock_status_result_msg
+{
+	required uint32 uid = 1;				// 用户ID
+	repeated user_warning_stock_status  stock_status = 2;	// 股票状态数组
+}
+
+// 删除用户个股预警配置
+message delete_warning_config_form_code_msg
+{
+	required uint32 uid = 1;				// 用户ID
+	required string stock_code = 2;			// 获取的股票代码
+}
+
+message delete_warning_config_result_form_code_msg
+{
+	/* 
+	返回状态
+    —————————————
+    |   状态吗    |  结果	 |
+    |————————————|
+    |      0      |  失败    |_
+    |————————————|
+    |      1      |  成功    |
+    —————————————
+	*/
+	required uint32 status = 1;	
+}
+
+// 设置用户的预警配置
+message set_warning_config_msg
+{
+	required uint32 uid = 1;				    // 用户ID
+	required string stock_code = 2;
+	repeated warning_config_data config_data = 3;	
+}
+
+message set_warning_config_result_msg
+{
+	/* 
+	返回状态
+    —————————————
+    |   状态吗    |  结果	 |
+    |————————————|
+    |      0      |  失败    |
+    |————————————|
+    |      1      |  成功    |
+    —————————————
+	*/
+	required uint32 status = 1;	
+}
+
+
+
+// 获取用户历史推送的预警信息
+// warning_price_high 
+// warning_price_low 
+// warning_rise_percentage
+// warning_drop_percentage
+message warning_stock_value
+{
+	required double value = 1;
+}
+
+message warning_record
+{
+	required string code = 1;
+	required string name = 2;
+	message warning_msg_node
+	{
+		required enum_warning_type warning_type = 1;
+		optional bytes sub_msg = 2;
+		required uint32 time = 3;
+	}
+	repeated warning_msg_node node = 3;
+}
+
+message get_warning_record_from_uid_msg
+{
+	required uint32 uid = 1;				// 用户ID
+}
+
+message get_warning_record_from_uid_result_msg
+{
+	required uint32 uid = 1;				// 用户ID
+	repeated warning_record record = 2;		// 记录消息
+}

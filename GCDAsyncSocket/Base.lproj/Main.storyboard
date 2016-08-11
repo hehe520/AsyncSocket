@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vcl-tC-Qt8">
+                                <rect key="frame" x="42" y="502" width="46" height="30"/>
+                                <state key="normal" title="连接"/>
+                                <connections>
+                                    <action selector="connectButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ki1-9u-yXH"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q0H-dA-hIZ">
+                                <rect key="frame" x="42" y="562" width="46" height="30"/>
+                                <state key="normal" title="断开"/>
+                                <connections>
+                                    <action selector="disconnectButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iuk-Gh-iD2"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="25P-JB-PVx">
+                                <rect key="frame" x="132" y="502" width="69" height="30"/>
+                                <state key="normal" title="tcp登录"/>
+                                <connections>
+                                    <action selector="TCPLogin:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cah-fg-V3L"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gui-e0-i0P">
+                                <rect key="frame" x="132" y="562" width="57" height="30"/>
+                                <state key="normal" title="心跳"/>
+                                <connections>
+                                    <action selector="heart:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fYo-7Y-c3q"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="86x-R7-GGu">
+                                <rect key="frame" x="254" y="502" width="70" height="30"/>
+                                <state key="normal" title="普通请求"/>
+                                <connections>
+                                    <action selector="requestTcp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wb5-n8-M2z"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eL3-mi-lI4">
+                                <rect key="frame" x="232" y="562" width="114" height="30"/>
+                                <state key="normal" title="模拟收到踢人包"/>
+                                <connections>
+                                    <action selector="kick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Hha-XE-6iE"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="409.5" y="296.5"/>
+        </scene>
+    </scenes>
+</document>
