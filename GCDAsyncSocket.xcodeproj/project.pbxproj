@@ -20,17 +20,11 @@
 		64DA9F031D2B4BA20006AEE5 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 64DA9EFE1D2B4BA20006AEE5 /* GCDAsyncSocket.m */; };
 		64DA9F041D2B4BA20006AEE5 /* GCDAsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 64DA9F001D2B4BA20006AEE5 /* GCDAsyncUdpSocket.m */; };
 		64DA9F181D2B4FDE0006AEE5 /* Auth.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 64DA9F071D2B4FDE0006AEE5 /* Auth.pb.m */; };
-		64DA9F191D2B4FDE0006AEE5 /* auth.proto in Resources */ = {isa = PBXBuildFile; fileRef = 64DA9F081D2B4FDE0006AEE5 /* auth.proto */; };
 		64DA9F1A1D2B4FDE0006AEE5 /* Common.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 64DA9F0A1D2B4FDE0006AEE5 /* Common.pb.m */; };
-		64DA9F1B1D2B4FDE0006AEE5 /* common.proto in Resources */ = {isa = PBXBuildFile; fileRef = 64DA9F0B1D2B4FDE0006AEE5 /* common.proto */; };
 		64DA9F1C1D2B4FDE0006AEE5 /* Index.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 64DA9F0D1D2B4FDE0006AEE5 /* Index.pb.m */; };
-		64DA9F1D1D2B4FDE0006AEE5 /* index.proto in Resources */ = {isa = PBXBuildFile; fileRef = 64DA9F0E1D2B4FDE0006AEE5 /* index.proto */; };
 		64DA9F1E1D2B4FDE0006AEE5 /* Investment.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 64DA9F101D2B4FDE0006AEE5 /* Investment.pb.m */; };
-		64DA9F1F1D2B4FDE0006AEE5 /* investment.proto in Resources */ = {isa = PBXBuildFile; fileRef = 64DA9F111D2B4FDE0006AEE5 /* investment.proto */; };
 		64DA9F201D2B4FDE0006AEE5 /* Report.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 64DA9F131D2B4FDE0006AEE5 /* Report.pb.m */; };
-		64DA9F211D2B4FDE0006AEE5 /* report.proto in Resources */ = {isa = PBXBuildFile; fileRef = 64DA9F141D2B4FDE0006AEE5 /* report.proto */; };
 		64DA9F221D2B4FDE0006AEE5 /* Warning.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 64DA9F161D2B4FDE0006AEE5 /* Warning.pb.m */; };
-		64DA9F231D2B4FDE0006AEE5 /* warning.proto in Resources */ = {isa = PBXBuildFile; fileRef = 64DA9F171D2B4FDE0006AEE5 /* warning.proto */; };
 		64DA9F571D2B50450006AEE5 /* AbstractMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 64DA9F261D2B50450006AEE5 /* AbstractMessage.m */; };
 		64DA9F581D2B50450006AEE5 /* AbstractMessageBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 64DA9F281D2B50450006AEE5 /* AbstractMessageBuilder.m */; };
 		64DA9F591D2B50450006AEE5 /* CodedInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 64DA9F2B1D2B50450006AEE5 /* CodedInputStream.m */; };
@@ -89,22 +83,16 @@
 		64DA9F001D2B4BA20006AEE5 /* GCDAsyncUdpSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncUdpSocket.m; sourceTree = "<group>"; };
 		64DA9F061D2B4FDE0006AEE5 /* Auth.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Auth.pb.h; sourceTree = "<group>"; };
 		64DA9F071D2B4FDE0006AEE5 /* Auth.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Auth.pb.m; sourceTree = "<group>"; };
-		64DA9F081D2B4FDE0006AEE5 /* auth.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = auth.proto; sourceTree = "<group>"; };
 		64DA9F091D2B4FDE0006AEE5 /* Common.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Common.pb.h; sourceTree = "<group>"; };
 		64DA9F0A1D2B4FDE0006AEE5 /* Common.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Common.pb.m; sourceTree = "<group>"; };
-		64DA9F0B1D2B4FDE0006AEE5 /* common.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = common.proto; sourceTree = "<group>"; };
 		64DA9F0C1D2B4FDE0006AEE5 /* Index.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Index.pb.h; sourceTree = "<group>"; };
 		64DA9F0D1D2B4FDE0006AEE5 /* Index.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Index.pb.m; sourceTree = "<group>"; };
-		64DA9F0E1D2B4FDE0006AEE5 /* index.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = index.proto; sourceTree = "<group>"; };
 		64DA9F0F1D2B4FDE0006AEE5 /* Investment.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Investment.pb.h; sourceTree = "<group>"; };
 		64DA9F101D2B4FDE0006AEE5 /* Investment.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Investment.pb.m; sourceTree = "<group>"; };
-		64DA9F111D2B4FDE0006AEE5 /* investment.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = investment.proto; sourceTree = "<group>"; };
 		64DA9F121D2B4FDE0006AEE5 /* Report.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Report.pb.h; sourceTree = "<group>"; };
 		64DA9F131D2B4FDE0006AEE5 /* Report.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Report.pb.m; sourceTree = "<group>"; };
-		64DA9F141D2B4FDE0006AEE5 /* report.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = report.proto; sourceTree = "<group>"; };
 		64DA9F151D2B4FDE0006AEE5 /* Warning.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Warning.pb.h; sourceTree = "<group>"; };
 		64DA9F161D2B4FDE0006AEE5 /* Warning.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Warning.pb.m; sourceTree = "<group>"; };
-		64DA9F171D2B4FDE0006AEE5 /* warning.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = warning.proto; sourceTree = "<group>"; };
 		64DA9F251D2B50450006AEE5 /* AbstractMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractMessage.h; sourceTree = "<group>"; };
 		64DA9F261D2B50450006AEE5 /* AbstractMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbstractMessage.m; sourceTree = "<group>"; };
 		64DA9F271D2B50450006AEE5 /* AbstractMessageBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractMessageBuilder.h; sourceTree = "<group>"; };
@@ -259,22 +247,16 @@
 			children = (
 				64DA9F061D2B4FDE0006AEE5 /* Auth.pb.h */,
 				64DA9F071D2B4FDE0006AEE5 /* Auth.pb.m */,
-				64DA9F081D2B4FDE0006AEE5 /* auth.proto */,
 				64DA9F091D2B4FDE0006AEE5 /* Common.pb.h */,
 				64DA9F0A1D2B4FDE0006AEE5 /* Common.pb.m */,
-				64DA9F0B1D2B4FDE0006AEE5 /* common.proto */,
 				64DA9F0C1D2B4FDE0006AEE5 /* Index.pb.h */,
 				64DA9F0D1D2B4FDE0006AEE5 /* Index.pb.m */,
-				64DA9F0E1D2B4FDE0006AEE5 /* index.proto */,
 				64DA9F0F1D2B4FDE0006AEE5 /* Investment.pb.h */,
 				64DA9F101D2B4FDE0006AEE5 /* Investment.pb.m */,
-				64DA9F111D2B4FDE0006AEE5 /* investment.proto */,
 				64DA9F121D2B4FDE0006AEE5 /* Report.pb.h */,
 				64DA9F131D2B4FDE0006AEE5 /* Report.pb.m */,
-				64DA9F141D2B4FDE0006AEE5 /* report.proto */,
 				64DA9F151D2B4FDE0006AEE5 /* Warning.pb.h */,
 				64DA9F161D2B4FDE0006AEE5 /* Warning.pb.m */,
-				64DA9F171D2B4FDE0006AEE5 /* warning.proto */,
 			);
 			name = pbbuf;
 			path = src;
@@ -426,13 +408,7 @@
 			files = (
 				64DA9EEB1D2B4B4E0006AEE5 /* LaunchScreen.storyboard in Resources */,
 				64DA9EE81D2B4B4E0006AEE5 /* Assets.xcassets in Resources */,
-				64DA9F211D2B4FDE0006AEE5 /* report.proto in Resources */,
-				64DA9F191D2B4FDE0006AEE5 /* auth.proto in Resources */,
-				64DA9F1B1D2B4FDE0006AEE5 /* common.proto in Resources */,
-				64DA9F1F1D2B4FDE0006AEE5 /* investment.proto in Resources */,
 				64DA9EE61D2B4B4E0006AEE5 /* Main.storyboard in Resources */,
-				64DA9F231D2B4FDE0006AEE5 /* warning.proto in Resources */,
-				64DA9F1D1D2B4FDE0006AEE5 /* index.proto in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
